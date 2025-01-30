@@ -118,6 +118,6 @@ Refer to the database README file for details on setting up the database and con
 
 ---
 
-### 11. Launch the Project
+### 10. Launch the Project
 1. Click on the HTTPS URL for `if-df.medixinfusion.com` from IIS.
 2. Verify that the login screen for the website appears.
