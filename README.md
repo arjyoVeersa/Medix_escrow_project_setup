@@ -13,7 +13,7 @@ Extract the project folder to a location on your system. Make note of the file p
    ```plaintext
    <your ip>  proxy-dev.infuseflow.com
    <your ip>  if-dev.infuseflow.com
-   <your ip>  if-df.infuseflow.com
+   <your ip>  if-df.medixinfusion.com
    ```
 3. Save the file. Note that you may need to update this file if your IP address changes.
 
@@ -44,13 +44,13 @@ Extract the project folder to a location on your system. Make note of the file p
 
 ### 5. Set Up IIS for DocFlock
 1. Open the IIS Management Console.
-2. Create a new web server for `if-df.infuseflow.com`:
+2. Create a new web server for `if-df.medixinfusion.com`:
    - Right-click on **Sites** in the left-hand dropdown.
      ![image](https://github.com/user-attachments/assets/2d9c0a5e-61d6-44bf-bac0-e9b5bf04ac1d)
    - Fill in the following details:
-     - **Site Name**: `if-df.infuseflow.com`
+     - **Site Name**: `if-df.medixinfusion.com`
      - **Physical Path**: `<your_path>\medix_escrow-main\df\DocFlock.Web`
-     - **Host Name**: `if-df.infuseflow.com`
+     - **Host Name**: `if-df.medixinfusion.com`
      - **Binding**: Configure both `http` and `https` bindings for this site.
        ![image](https://github.com/user-attachments/assets/acb99fbe-ff29-4b44-acb5-d0597661571a)
 
@@ -63,7 +63,7 @@ Extract the project folder to a location on your system. Make note of the file p
      3. Add the following users with Full Control:
         - `IUSR`
         - `IIS_IUSRS`
-        - `IIS APPPOOL\if-df.infuseflow.com`
+        - `IIS APPPOOL\if-df.medixinfusion.com`
 
        ![image](https://github.com/user-attachments/assets/b42f8e2f-381c-423f-8aa2-384d6fad1018)
        ![image](https://github.com/user-attachments/assets/c9547cbd-8789-4242-9513-320e6609475b)
@@ -71,7 +71,7 @@ Extract the project folder to a location on your system. Make note of the file p
      - Use **Advanced** to find and select the required users:
        ![image](https://github.com/user-attachments/assets/61d4793c-1aa0-4a90-9262-3144ca6706b2)
 
-   - Browse the `if-df.infuseflow.com` site:
+   - Browse the `if-df.medixinfusion.com` site:
      ![image](https://github.com/user-attachments/assets/31d954b2-497f-43e6-97ed-3799931758f9)
 
 3. (Optional) If the site does not work:
@@ -82,57 +82,32 @@ Extract the project folder to a location on your system. Make note of the file p
 ---
 
 ### 6. Install URL Rewrite (Optional)
-If browsing the site on `if-df.infuseflow.com` fails:
+If browsing the site on `if-df.medixinfusion.com` fails:
 1. Download and install the **URL Rewrite** module for IIS.
 2. Restart IIS to apply changes.
 
 ---
 
-### 7. Open the InfuseFlow Solution
-1. Navigate to the `gen2` folder and open `infuseflow_medix.sln` in Visual Studio.
-2. Make the following changes:
-   - **`InfuseFlow.Web`**: Comment out the line `app.UseHttpsRedirection();` (line 61 in `Startup.cs`).
-   - **`InfuseFlow.Proxy`**: Comment out lines 74-93 in `Startup.cs`:
-     ```csharp
-     app.UsePresence(Configuration, options =>
-     {
-         if (bool.Parse(config["USE_SSL"]))
-         {
-             var root = Environment.GetEnvironmentVariable("PWD");
-             var certPath = string.IsNullOrEmpty(root)
-                 ? config["HTTPS_CERTIFICATE"]
-                 : System.IO.Path.Combine(root, config["HTTPS_CERTIFICATE"]);
-             var certName = config["HTTPS_CERTIFICATE"];
-             if (!string.IsNullOrEmpty(certName))
-             {
-                 options.Certificate = new X509Certificate2(certPath, config["HTTPS_CERTIFICATE_PASSWORD"]);
-             }
-         }
-     });
-     app.UseHttpsRedirection();
-     ```
 
----
-
-### 8. Configure and Compile InfuseFlow
+### 7. Configure and Compile InfuseFlow
 1. Open **Configure Startup Projects** in Visual Studio.
 2. Set `InfuseFlow.Proxy` to **Start Without Debugging**.
 3. Set `InfuseFlow.Web` to **Start**.
 4. Change the build profile to `DFIIS`.
-5. Compile the solution. Upon running, two Swagger pages should open automatically.
+5. Compile the solution. Upon running, two console app pages should open automatically.
 
 ---
 
-### 9. Debugging DocFlock
+### 8. Debugging DocFlock
 1. Open the **Debug** tab in Visual Studio.
 2. Go to **Attach to Process**:
    ![image](https://github.com/user-attachments/assets/5e2da9ac-d907-4015-8952-f5d1a943aeb4)
-3. Attach the process `w3wp` to DocFlock (ensure `if-df.infuseflow.com` is running in the browser):
+3. Attach the process `w3wp` to DocFlock (ensure `if-df.medixinfusion.com` is running in the browser):
    ![image](https://github.com/user-attachments/assets/2eff3240-2ae2-462a-b4ba-3df3e98899f4)
 
 ---
 
-### 10. Database Setup
+### 9. Database Setup
 Refer to the database README file for details on setting up the database and connection strings.
 
 1. In IIS Management Console, go to **Connection Strings**:
@@ -144,5 +119,5 @@ Refer to the database README file for details on setting up the database and con
 ---
 
 ### 11. Launch the Project
-1. Click on the HTTPS URL for `if-df.infuseflow.com` from IIS.
+1. Click on the HTTPS URL for `if-df.medixinfusion.com` from IIS.
 2. Verify that the login screen for the website appears.
