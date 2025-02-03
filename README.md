@@ -37,7 +37,7 @@ Extract the project folder to a location on your system. Make note of the file p
 ---
 
 ### 4. Open and Compile DocFlock
-1. Navigate to the `df` folder and open the `dockflock.sln` solution in Visual Studio.
+1. Navigate to the `df` folder and open the `docflock_medix.sln` solution in Visual Studio.
 2. Compile the solution with no errors.
 
 ---
