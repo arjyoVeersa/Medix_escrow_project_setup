@@ -11,8 +11,8 @@ Extract the project folder to a location on your system. Make note of the file p
 1. Open `C:\Windows\System32\drivers\etc\hosts` in a text editor with administrative privileges.
 2. Add the following entries, replacing `<your ip>` with your local IP address (found using `ipconfig` in Command Prompt):
    ```plaintext
-   <your ip>  proxy-dev.infuseflow.com
-   <your ip>  if-dev.infuseflow.com
+   <your ip>  proxy-dev.medixinfusion.com
+   <your ip>  if-dev.medixinfusion.com
    <your ip>  if-df.medixinfusion.com
    ```
 3. Save the file. Note that you may need to update this file if your IP address changes.
