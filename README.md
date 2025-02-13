@@ -81,7 +81,7 @@ Extract the project folder to a location on your system. Make note of the file p
 
 ---
 
-### 6. Install URL Rewrite (Optional)
+### 6. Install URL Rewrite 
 If browsing the site on `if-df.medixinfusion.com` fails:
 1. Download and install the **URL Rewrite** module for IIS.
 2. Restart IIS to apply changes.
@@ -91,10 +91,14 @@ If browsing the site on `if-df.medixinfusion.com` fails:
 
 ### 7. Configure and Compile InfuseFlow
 1. Open **Configure Startup Projects** in Visual Studio.
-2. Set `InfuseFlow.Proxy` to **Start Without Debugging**.
-3. Set `InfuseFlow.Web` to **Start**.
-4. Change the build profile to `DFIIS`.
-5. Compile the solution. Upon running, two console app pages should open automatically.
+2. Set  `InfuseFlow.Web to start with `InfuseFlow.Web` instead of IIS Express.
+ ![image](https://github.com/user-attachments/assets/79ef9c36-a3d2-4c36-8c49-331bb2455386)
+3. Click on set multiple startup projects.
+4. Set `InfuseFlow.Proxy` to **Start Without Debugging**.
+5. Set `InfuseFlow.Web` to **Start**.
+6. Build in both `DFIIS` and `Debug` profiles.
+7. Download and Install ssl certificate in InfuseFlow.Proxy security folder.
+8. Compile the solution. Upon running, two console app pages should open automatically.
 
 ---
 
