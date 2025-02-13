@@ -98,7 +98,8 @@ If browsing the site on `if-df.medixinfusion.com` fails:
 5. Set `InfuseFlow.Web` to **Start**.
 6. Build in both `DFIIS` and `Debug` profiles.
 7. Download and Install ssl certificate in InfuseFlow.Proxy security folder.
-8. Compile the solution. Upon running, two console app pages should open automatically.
+8. In IIS where you setup https for docflock make sure that the webiste uses the same ssl certificate otherwise it won't login within infuseflow.
+9. Compile the solution. Upon running, two console app pages should open automatically.
 
 ---
 
