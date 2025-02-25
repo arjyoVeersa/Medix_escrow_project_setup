@@ -3,7 +3,8 @@
 ## Step-by-Step Instructions
 
 ### 1. Extract the Medix Escrow Project
-Extract the project folder to a location on your system. Make note of the file path for future reference.
+- Extract the project folder to a location on your system. Make note of the file path for future reference.
+- Install Sql server, git, clone the repo and install .net version 4.7.2 developer pack
 
 ---
 
